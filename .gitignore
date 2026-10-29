@@ -1,0 +1,23 @@
+__pycache__/
+*.py[cod]
+.venv/
+.venv-*/
+venv/
+.env
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+dist/
+build/
+.mypy_cache/
+.ruff_cache/
+.pytest_cache/
+node_modules/
+frontend/dist/
+frontend/node_modules/
+frontend/tsconfig.tsbuildinfo
+# 渲染产物(图片/视频/配音)不入库;需要随仓库分发演示素材时再单独决定
+app/static/
+.probe*.db*
+data/

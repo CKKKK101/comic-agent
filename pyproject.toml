@@ -1,0 +1,34 @@
+[project]
+name = "comic-agent"
+version = "0.1.0"
+description = "AI 漫剧创作多智能体流水线 (FastAPI + LangGraph)"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+  "fastapi>=0.115.0",
+  "uvicorn[standard]>=0.30.0",
+  "pydantic-settings>=2.2.0",
+  "sqlmodel>=0.0.31",
+  "aiosqlite>=0.20.0",
+  "langgraph>=1.0.8",
+  "langgraph-checkpoint-sqlite>=2.0.0",  # checkpoint 落盘,支撑断点续跑
+  "httpx>=0.27.0",
+  "tzdata>=2024.1",  # Windows 无系统时区库,ZoneInfo 依赖它
+  "pillow>=12.3.0",
+]
+
+[dependency-groups]
+dev = [
+  "ruff>=0.6.0",
+  "pytest>=8.0.0",
+  "pytest-asyncio>=0.24.0",
+]
+
+[tool.ruff]
+line-length = 100
+target-version = "py311"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]
+pythonpath = ["."]

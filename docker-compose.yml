@@ -1,0 +1,20 @@
+services:
+  comic-agent:
+    build:
+      context: .
+      args:
+        DEBIAN_MIRROR: ${DEBIAN_MIRROR:-deb.debian.org}
+        PYPI_INDEX: ${PYPI_INDEX:-https://pypi.org/simple}
+    image: comic-agent:latest
+    container_name: comic-agent
+    ports:
+      - "18766:18766"
+    env_file:
+      - .env
+    environment:
+      DATABASE_URL: sqlite+aiosqlite:////app/data/comic-agent.db
+    volumes:
+      - ./data/db:/app/data
+      - ./data/static:/app/app/static
+    restart: unless-stopped
+    init: true
